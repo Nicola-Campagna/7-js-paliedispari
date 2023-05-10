@@ -11,7 +11,7 @@ const pcNumber = generateRandomNumberOneToFive();
 console.log(pcNumber + " :numero pc");
 
 // somma tra numero utente e numero pc
-const somma = pcNumber + userNumber;
+const somma = parseInt(pcNumber + userNumber);
 console.log(somma + " :somma");
 
 
@@ -20,7 +20,9 @@ if (
     !isNaN(somma) &&
     somma <= 10 &&
     String(userChoice) &&
-    userChoice === "PARI" || userChoice === "DISPARI"
+    userChoice === "PARI" || userChoice === "DISPARI" && !isNaN(somma) &&
+    somma <= 10 &&
+    String(userChoice)
 ) {
     console.log("valori inseriti correttamente");
 
@@ -43,14 +45,26 @@ else {
     console.error("GIOCO INTERROTTO \n valori inseriti non corretti");
 }
 
+/*****************************************
+ *             FUNCTIONS
+ *****************************************/
 
-// setting funzione che genera un n random tra 1 e 5
+/**
+ * funzione che genera un n random tra 1 e 5
+ * @returns {int} ritorna un numero generato random
+ */
+
 function generateRandomNumberOneToFive() {
     const randomNumber = Math.floor(Math.random() * 5 + 1);
     return randomNumber;
 }
 
-// setting funziona per verificare se un n è pari o dispari
+/**
+ * funziona per verificare se un n è pari o dispari
+ * @param {int} num numero da verificare
+ * @returns {boolean} true se il numero è pari , false se non lo è
+ */
+
 function isEven(num) {
     num = parseInt(num);
     // ritorna se il numero è pari
